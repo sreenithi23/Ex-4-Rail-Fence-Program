@@ -19,7 +19,53 @@ STEP-4: Arrange the characters of the keyword in sorted order and the correspond
 STEP-5: Read the characters row wise or column wise in the former order to get the cipher text.
 
 # PROGRAM
-
+```
+#include <stdio.h>
+ #include <string.h>
+ int main() {
+ int i, j, k, l;
+ char a[20], c[20], d[20];
+ printf("\n\t\tRAIL FENCE TECHNIQUE\n");
+ printf("\nEnter the input string: ");
+ fgets(a, sizeof(a), stdin);
+ a[strcspn(a, "\n")] = '\0';
+ l = strlen(a); 
+ for (i = 0, j = 0; i < l; i++) {
+ if (i % 2 == 0) {
+ c[j++] = a[i];
+ }
+ }
+ for (i = 0; i < l; i++) {
+ if (i % 2 == 1) {
+ c[j++] = a[i];
+ }
+ }
+ c[j] = '\0'; 
+ printf("\nCipher text after applying rail fence: %s\n", c);
+ 
+ if (l % 2 == 0) {
+ k =l / 2;
+ } else {
+ k =(l / 2) + 1;
+ }
+ 
+ for (i = 0, j = 0; i < k; i++) {
+ d[j] = c[i];
+ j += 2;
+ }
+ for (i = k, j = 1; i < l; i++) {
+ d[j] = c[i];
+ j += 2;
+ }
+ d[l] = '\0'; 
+ printf("\nText after decryption: %s\n", d);
+ return 0; 
+ }
+```
 # OUTPUT
 
+![Screenshot 2025-05-26 210723](https://github.com/user-attachments/assets/6d89136d-2a32-432a-8100-0e33cffe8b9b)
+
+
 # RESULT
+The program implementing the Rail Fence cipher for encryption and decryption has been successfully executed, and the results have been verified.
